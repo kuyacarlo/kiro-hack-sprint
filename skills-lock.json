@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "skills": {
+    "stellar-forge": {
+      "source": "rylsherdamz-rgb/stellar-forge",
+      "sourceType": "github",
+      "skillPath": "SKILL.md",
+      "computedHash": "8fa293b5d249729654bcc6d0afca0c8ec6bc02a733aaae806326c2f6d0dde754"
+    }
+  }
+}

@@ -1,0 +1,13 @@
+# Narration Audio Files
+
+Generated audio files will be placed here by the narration script.
+
+Run `npm run narrate` from the promo/ directory to generate narration using ElevenLabs TTS.
+
+## Expected files:
+- `intro.mp3` - Scene 1 narration
+- `satellite.mp3` - Scene 2 narration
+- `how-it-works.mp3` - Scene 3 narration
+- `marketplace.mp3` - Scene 4 narration
+- `dashboard.mp3` - Scene 5 narration
+- `outro.mp3` - Scene 6 narration

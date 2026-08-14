@@ -1,0 +1,28 @@
+{
+  "name": "stellar-forge",
+  "version": "0.3.0",
+  "description": "Eval-driven multi-agent harness for building production Stellar dApps — 6 specialist agents, structured evals, agentic kit hooks, MCP integrations",
+  "author": {
+    "name": "Stellar Forge",
+    "url": "https://github.com/rylsherdamz-rgb/stellar-forge"
+  },
+  "homepage": "https://github.com/rylsherdamz-rgb/stellar-forge",
+  "repository": "https://github.com/rylsherdamz-rgb/stellar-forge",
+  "license": "MIT",
+  "keywords": [
+    "stellar",
+    "soroban",
+    "smart-contracts",
+    "dapp",
+    "blockchain",
+    "x402",
+    "mpp",
+    "stellar-wallets-kit",
+    "agentic-kit",
+    "eval-driven",
+    "multi-agent"
+  ],
+  "skills": ["SKILL.md"],
+  "agents": ["agents/stellar-contracts.md", "agents/stellar-frontend.md", "agents/stellar-backend.md", "agents/stellar-payments.md", "agents/stellar-ops.md", "agents/stellar-zk.md"],
+  "commands": [".claude/commands/scaffold.md", ".claude/commands/deploy.md", ".claude/commands/test-e2e.md", ".claude/commands/graphify.md"]
+}
