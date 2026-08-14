@@ -2,6 +2,7 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useWallet } from "./providers/WalletProvider";
 
 const NAV_ITEMS = [
   { href: "/", label: "Home" },
@@ -13,6 +14,9 @@ const NAV_ITEMS = [
 
 export function Navigation() {
   const pathname = usePathname();
+  const { address, connected, connecting, connect, disconnect } = useWallet();
+
+  const shortAddress = address ? `${address.slice(0, 4)}...${address.slice(-4)}` : "";
 
   return (
     <header className="glass sticky top-0 z-50 border-b border-[var(--color-border)]/50">
@@ -32,7 +36,7 @@ export function Navigation() {
         </Link>
 
         {/* Nav */}
-        <nav aria-label="Main navigation">
+        <nav aria-label="Main navigation" className="hidden md:block">
           <ul className="flex items-center gap-0.5 rounded-[var(--radius-full)] border border-[var(--color-border)]/50 bg-[var(--color-muted)]/50 p-1">
             {NAV_ITEMS.map((item) => {
               const isActive = pathname === item.href || (item.href !== "/" && pathname.startsWith(item.href));
@@ -55,10 +59,33 @@ export function Navigation() {
           </ul>
         </nav>
 
-        {/* Status */}
-        <div className="hidden items-center gap-2 sm:flex">
-          <div className="dot-pulse" />
-          <span className="text-[11px] font-medium text-[var(--color-muted-foreground)]">Testnet</span>
+        {/* Wallet Button */}
+        <div className="flex items-center gap-3">
+          <div className="hidden items-center gap-2 sm:flex">
+            <div className="dot-pulse" />
+            <span className="text-[11px] font-medium text-[var(--color-muted-foreground)]">Testnet</span>
+          </div>
+          {connected ? (
+            <div className="flex items-center gap-2">
+              <span className="rounded-[var(--radius-full)] bg-[var(--color-muted)] px-3 py-1.5 font-mono text-[11px] text-[var(--color-foreground)]">
+                {shortAddress}
+              </span>
+              <button
+                onClick={disconnect}
+                className="press rounded-[var(--radius-full)] border border-[var(--color-border)] px-3 py-1.5 text-[11px] font-medium text-[var(--color-muted-foreground)] transition-colors duration-[var(--duration-fast)] hover:border-[var(--color-destructive)] hover:text-[var(--color-destructive)]"
+              >
+                Disconnect
+              </button>
+            </div>
+          ) : (
+            <button
+              onClick={connect}
+              disabled={connecting}
+              className="press rounded-[var(--radius-full)] bg-[var(--color-accent)] px-4 py-1.5 text-[12px] font-semibold text-[var(--color-on-accent)] shadow-sm transition-all duration-[var(--duration-fast)] hover:brightness-110 disabled:opacity-50"
+            >
+              {connecting ? "Connecting..." : "Connect Wallet"}
+            </button>
+          )}
         </div>
       </div>
     </header>

@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Navigation } from "./navigation";
+import { WalletProvider } from "./providers/WalletProvider";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -30,6 +31,7 @@ export default function RootLayout({
   return (
     <html lang="en" className="dark">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <WalletProvider>
         <div className="flex min-h-screen flex-col">
           <Navigation />
           <main className="flex-1 px-5 py-8 sm:px-8">
@@ -43,6 +45,7 @@ export default function RootLayout({
             </p>
           </footer>
         </div>
+        </WalletProvider>
       </body>
     </html>
   );
